@@ -1,10 +1,10 @@
 import { dev } from "$app/environment";
 import { DrizzleSQLiteAdapter } from "@lucia-auth/adapter-drizzle";
 import { db } from "./db";
-import { sessionTable, userTable } from "./db/schema";
+import { session, user } from "./db/schema";
 import { Lucia, TimeSpan } from "lucia";
 
-const adapter = new DrizzleSQLiteAdapter(db, sessionTable, userTable);
+const adapter = new DrizzleSQLiteAdapter(db, session, user);
 
 export const lucia = new Lucia(adapter, {
   sessionExpiresIn: new TimeSpan(2, "w"),
@@ -13,19 +13,23 @@ export const lucia = new Lucia(adapter, {
       secure: !dev,
     },
   },
-  // TODO: Declare Lucia module/namespace
-  // getUserAttributes: (attributes) => ({
-  //   id: attributes.id,
-  //   email: attributes.email,
-  //   name: attributes.name,
-  // })
+  getUserAttributes: (attributes) => ({
+    id: attributes.id,
+    email: attributes.email,
+    name: attributes.name,
+  }),
 });
 
 declare module "lucia" {
   interface Register {
     Lucia: typeof lucia;
-    // TODO: Infer types from database schema
     // DatabaseSessionAttributes: DatabaseSessionAttributes;
-    // DatabaseUserAttributes: DatabaseUserAttributes;
+    DatabaseUserAttributes: DatabaseUserAttributes;
   }
 }
+
+type DatabaseUserAttributes = {
+  id: string;
+  email: string;
+  name: string;
+};
