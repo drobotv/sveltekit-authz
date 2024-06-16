@@ -47,16 +47,17 @@ export const invitation = sqliteTable(
   "invitation",
   {
     id: defaultPrimaryKey,
+    token: text("token").notNull(),
     organizationId: text("organization_id")
       .notNull()
       .references(() => organization.id),
     email: text("email").notNull(),
-    field: text("field").notNull(),
     role: text("role", { enum: organizationRoles }).notNull(),
     expiresAt: text("expires_at").notNull(),
     ...timestamps,
   },
   (table) => ({
+    tokenIndex: uniqueIndex("inv_token_idx").on(table.token),
     organizationIndex: index("inv_org_idx").on(table.organizationId),
     emailIndex: uniqueIndex("inv_email_idx").on(table.email),
   }),
