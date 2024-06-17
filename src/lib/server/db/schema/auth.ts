@@ -4,7 +4,7 @@ import {
   sqliteTable,
   uniqueIndex,
 } from "drizzle-orm/sqlite-core";
-import { defaultPrimaryKey, timestamps } from "./shared";
+import { defaultPrimaryKey, timestamps, userRoles } from "./shared";
 
 export const user = sqliteTable(
   "user",
@@ -12,6 +12,7 @@ export const user = sqliteTable(
     id: defaultPrimaryKey,
     email: text("email").notNull().unique(),
     name: text("name").notNull(),
+    role: text("role", { enum: userRoles }).notNull(),
     hashedPassword: text("hashed_password").notNull(),
     ...timestamps,
   },
