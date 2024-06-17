@@ -12,7 +12,7 @@ export const user = sqliteTable(
     id: defaultPrimaryKey,
     email: text("email").notNull().unique(),
     name: text("name").notNull(),
-    role: text("role", { enum: userRoles }).notNull(),
+    role: text("role", { enum: userRoles }).notNull().default("user"),
     hashedPassword: text("hashed_password").notNull(),
     ...timestamps,
   },

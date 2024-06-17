@@ -18,6 +18,6 @@
     }
   },
   "files": {
-    "ignore": [".svelte-kit/**/*"]
+    "ignore": [".svelte-kit/**/*", "./src/lib/components/ui/**/*"]
   }
 }
