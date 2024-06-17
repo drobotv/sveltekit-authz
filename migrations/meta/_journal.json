@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1718468758962,
-      "tag": "0000_plain_star_brand",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1718525773807,
-      "tag": "0001_wise_zuras",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "6",
-      "when": 1718615923421,
-      "tag": "0002_milky_korath",
+      "when": 1718635620703,
+      "tag": "0000_lucky_vanisher",
       "breakpoints": true
     }
   ]

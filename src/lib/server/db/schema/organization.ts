@@ -15,9 +15,9 @@ export const organization = sqliteTable(
     ownerId: text("owner_id")
       .notNull()
       .references(() => user.id),
-    name: text("name", { length: 255 }).notNull(),
-    verified: integer("id", { mode: "boolean" }).notNull().default(false),
-    description: text("description", { length: 1024 }).default(""),
+    name: text("name").notNull(),
+    verified: integer("verified", { mode: "boolean" }).notNull(),
+    description: text("description").notNull(),
     ...timestamps,
   },
   (table) => ({
