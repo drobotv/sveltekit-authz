@@ -16,9 +16,6 @@ export const actions = {
     const verified =
       (await event.request.formData()).get("verified") === "on" ? 1 : 0;
 
-    console.log("id", id);
-    console.log("verified", verified);
-
     if (!id) {
       return fail(400, {});
     }
