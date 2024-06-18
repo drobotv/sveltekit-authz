@@ -43,3 +43,16 @@ export const registerSchema = v.pipe(
     ["confirmPassword"],
   ),
 );
+
+export const createOrganizationSchema = v.object({
+  name: v.pipe(
+    v.string(),
+    v.nonEmpty("Please enter a name."),
+    v.minLength(2, "The name must have 2 characters or more."),
+    v.maxLength(128, "The name is too long."),
+  ),
+  description: v.pipe(
+    v.string(),
+    v.maxLength(512, "The description is too long."),
+  ),
+});

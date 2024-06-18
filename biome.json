@@ -17,6 +17,18 @@
       }
     }
   },
+  "overrides": [
+    {
+      "include": ["*.svelte"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "off"
+          }
+        }
+      }
+    }
+  ],
   "files": {
     "ignore": [".svelte-kit/**/*", "./src/lib/components/ui/**/*"]
   }

@@ -16,7 +16,7 @@ export const organization = sqliteTable(
       .notNull()
       .references(() => user.id),
     name: text("name").notNull(),
-    verified: integer("verified", { mode: "boolean" }).notNull(),
+    verified: integer("verified").notNull(), // { mode: "boolean" } conflicts with SQLite
     description: text("description").notNull(),
     ...timestamps,
   },
